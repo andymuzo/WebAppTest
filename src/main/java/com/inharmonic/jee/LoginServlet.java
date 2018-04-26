@@ -1,4 +1,4 @@
-package webapp.com.inharmonic;
+package com.inharmonic.jee;
 
 
 import java.io.IOException;
