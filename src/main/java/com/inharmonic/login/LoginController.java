@@ -1,13 +1,21 @@
-package com.inharmonic.springmvc;
+package com.inharmonic.login;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.inharmonic.login.LoginService;
+
 @Controller
 public class LoginController {
+	
+	// Set the login service - use Spring Autowiring
+	
+	@Autowired
+	LoginService service;
 
 	@RequestMapping(value="/login", method= RequestMethod.GET)
 	public String showLoginPage() {
@@ -18,8 +26,13 @@ public class LoginController {
 	public String handleLoginRequest(@RequestParam String name,
 			@RequestParam String password,
 			ModelMap model) {
-		model.put("name", name);
-		model.put("password", password);
-		return "welcome";
+		if (!service.isUserValid(name, password)) {
+			model.put("errorMessage", "Invalid Credentials");
+			return "login";
+		} else {
+			model.put("name", name);
+			model.put("password", password);
+			return "welcome";
+		}
 	}
 }

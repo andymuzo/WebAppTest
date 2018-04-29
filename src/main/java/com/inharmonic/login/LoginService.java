@@ -1,6 +1,9 @@
-package com.inharmonic.jee;
+package com.inharmonic.login;
 
-public class UserValidationService {
+import org.springframework.stereotype.Service;
+
+@Service
+public class LoginService {
 	
 	public boolean isUserValid(String user, String password) {
 		if (user.equals("Andy") && password.equals("password")) return true;
