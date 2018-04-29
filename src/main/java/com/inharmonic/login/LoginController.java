@@ -6,10 +6,12 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.inharmonic.login.LoginService;
 
 @Controller
+@SessionAttributes("name")
 public class LoginController {
 	
 	// Set the login service - use Spring Autowiring
@@ -31,7 +33,6 @@ public class LoginController {
 			return "login";
 		} else {
 			model.put("name", name);
-			model.put("password", password);
 			return "welcome";
 		}
 	}

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,9 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<p>Hi ${name},</p>
-	<p>Your Todos are ${todos}</p>
-	
-	<a class="button" href="/add-todo">Add</a>
+<h1>Add a Todo</h1>
+<form method="post">
+	<input name="desc" type="text"/>
+	<input type="submit" value="Add"/>
+</form>
 </body>
 </html>
